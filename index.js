@@ -11,7 +11,7 @@ var passwordKey = ':_password'
 module.exports = function getRegistryAuthInfo(registryUrl, opts) {
   var options = opts || {}
   var npmrc = require('rc')('npm', {registry: 'https://registry.npmjs.org/'})
-  var checkUrl = registryUrl || npmrc.registry
+  var checkUrl = normalizePath(registryUrl || npmrc.registry)
   var parsed = url.parse(checkUrl, false, true)
   var pathname
 
